@@ -1,8 +1,12 @@
-# Fishkey
+## Fishkey
 
 Fishkey is a web application for learning through flashcards, enhanced with AI. The main AI features include:
 - A chatbot for interactive learning
 - AI-generated flashcard content to help users create definitions automatically
+
+## Demo
+https://github.com/user-attachments/assets/e152a340-4f60-4122-89a0-c4b7a58c6220
+https://github.com/user-attachments/assets/807f085e-be56-4d90-8805-21e7a92bc772
 
 ## Tech Stack
 ### Backend
