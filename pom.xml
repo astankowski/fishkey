@@ -8,10 +8,10 @@
 		<version>3.4.0</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>io.github.byttrio</groupId>
-	<artifactId>andjo</artifactId>
+	<groupId>io.github.astankowski</groupId>
+	<artifactId>fishkey</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>ANDJO</name>
+	<name>Fishkey</name>
 	<description>An web application for learning foreign languages through flashcards and quizzes. Generating flashcards and quizzes by using AI.</description>
 	<url/>
 	<licenses>
