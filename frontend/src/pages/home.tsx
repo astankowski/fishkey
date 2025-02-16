@@ -16,14 +16,14 @@ export default function HomePage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/flashcard-sets')
+    fetch('/api/flashcard-sets')
       .then(response => response.json())
       .then(json => setFlashcardSetData(json))
       .catch(error => console.error(error));
   }, []);
 
   function handleClick(id : number) {
-    fetch('http://localhost:8080/api/flashcards/set/' + id)
+    fetch('/api/flashcards/set/' + id)
       .then(response => response.json())
       .then(json => setFlashcardData(json))
       .catch(error => console.error(error));

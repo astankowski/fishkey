@@ -8,7 +8,7 @@ export default function Leaderboard() {
   const [leaderboardData, setLeaderboardData] = useState<User[]>([])
 
   useEffect(() => {
-      fetch('http://localhost:8080/api/user/leaderboard')
+      fetch('/api/user/leaderboard')
         .then(response => response.json())
         .then(json => setLeaderboardData(json))
         .catch(error => console.error(error));

@@ -60,7 +60,7 @@ export default function CreateFlashcardSetPage() {
     }
 
     try {
-      const response = await fetch("http://localhost:8080/api/flashcard-sets/create", {
+      const response = await fetch("/api/flashcard-sets/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

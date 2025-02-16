@@ -8,7 +8,7 @@ export default function FlashcardSetPage() {
   const [flashcardData, setFlashcardData] = useState<Flashcard[]>([])
   const {id} = useParams();
   useEffect(() => {
-      fetch('http://localhost:8080/api/flashcards/set/' + id)
+      fetch('/api/flashcards/set/' + id)
       .then(response => response.json())
       .then(json => setFlashcardData(json))
       .catch(error => console.error(error));

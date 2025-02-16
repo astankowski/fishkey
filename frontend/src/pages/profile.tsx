@@ -14,7 +14,7 @@ export default function ProfilePage() {
 
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/user/' + '44444444-4444-4444-4444-444444444444')
+    fetch('/api/user/' + '44444444-4444-4444-4444-444444444444')
       .then(response => response.json())
       .then(json => setUserData(json))
       .catch(error => console.error(error));
