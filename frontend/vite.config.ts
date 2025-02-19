@@ -13,7 +13,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://fishkey-load-balancer-1947283239.eu-north-1.elb.amazonaws.com',
+        target: 'https://3t2d1gmx79.execute-api.eu-north-1.amazonaws.com/',
         changeOrigin: true,
         secure: false
       }
