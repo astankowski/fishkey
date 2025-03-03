@@ -11,8 +11,9 @@ https://github.com/user-attachments/assets/807f085e-be56-4d90-8805-21e7a92bc772
 
 ## Tech Stack
 ### Backend
-- **Java Spring Boot**
-- **H2 Database**
+- **Java**
+- **Spring Boot**
+- **PostgreSQL**
 
 ### Frontend
 - **React**
@@ -68,7 +69,7 @@ Swagger is enabled for API documentation. Once the backend is running, visit:
 
 ## Features
 ### 📚 Leitner System (Spaced Repetition)
-Fishkey uses the **Leitner System** for efficient flashcard learning. This technique, introduced by German journalist **Sebastian Leitner** in 1972, ensures optimal memorization by sorting flashcards into learning stages based on recall accuracy.
+Fishkey plans to use the **Leitner System** for efficient flashcard learning. This technique, introduced by German journalist **Sebastian Leitner** in 1972, ensures optimal memorization by sorting flashcards into learning stages based on recall accuracy.
 
 **How It Works:**
 1. Flashcards are divided into levels based on user performance.
