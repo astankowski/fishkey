@@ -1,6 +1,8 @@
 package io.github.astankowski.fishkey.user;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import io.github.astankowski.fishkey.flashcardset.FlashcardSet;
 import io.github.astankowski.fishkey.trophies.Trophies;
 import jakarta.persistence.*;
@@ -23,8 +25,11 @@ public class User {
     private UUID id;
     private String username;
     private String email;
+    
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
-    private Integer totalPoints;
+    private String role = "ROLE_USER";
+    private Integer totalPoints = 0;
     private LocalDateTime updatedAt = LocalDateTime.now();
 
     @Column(updatable = false)
@@ -36,7 +41,6 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "set_id")
     )
-    @JsonManagedReference
     Set<FlashcardSet> savedFlashcardSets;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval=true)

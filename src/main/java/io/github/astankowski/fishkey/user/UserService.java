@@ -1,37 +1,29 @@
 package io.github.astankowski.fishkey.user;
 
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
 import java.util.UUID;
 
-@Service
-@RequiredArgsConstructor
-public class UserService {
-    private final UserRepository userRepository;
+public interface UserService {
 
-    public List<User> getAllUsers(){
-        return userRepository.findAll();
-    }
+    public List<User> getAllUsers();
 
-    public User getUserById(final UUID id){
-        return userRepository.findById(id).orElse(null);
-    }
+    public List<User> findAllUsers();
 
-    public User createUser(User user){
-        return userRepository.save(user);
-    }
+    public User getUserById(final UUID id);
 
-    public void deleteUserById(final UUID id){
-        userRepository.deleteById(id);
-    }
+    public User findUserProfileByJwt(String jwt);
 
-    public User updateUser(User user){
-        return userRepository.save(user);
-    }
+    public User findUserByEmail(String email);
 
-    public List<User> getUserLeaderboard(){
-        return userRepository.findAllByOrderByTotalPointsDesc();
-    }
+    public User findUserByUsername(String username);
+
+    public User findUserById(UUID id);
+
+    public User createUser(User user);
+
+    public User updateUser(User user);
+
+    public void deleteUserById(final UUID id);
+
+    public List<User> findAllByOrderByTotalPointsDesc();
 }

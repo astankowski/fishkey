@@ -5,16 +5,35 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useNavigate } from "react-router-dom"
 import background_image from "@/assets/background-image.webp"
+import { useState } from "react"
+import { register } from "@/lib/services"
 
 export function RegisterForm(
   {
   className,
   ...props
 }: React.ComponentProps<"div">) {
+  const [error, setError] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState('');
+
+
   const navigate = useNavigate();
-  const handleSubmit = () => {
-    navigate("/login")
+
+  const handleSubmit = async () => {
+    try {
+      const response = await register({ username, email, password })
+
+      const accessToken = response.data.jwt;
+      console.log("aT: ", accessToken)
+      localStorage.setItem("accessToken", accessToken);
+      navigate("/");
+    } catch (error:any) {
+      setError(error.response ? error.response.data : error.message);
+    }
   };
+
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card className="overflow-hidden">
@@ -32,7 +51,9 @@ export function RegisterForm(
                 <Input
                   id="username"
                   type="text"
+                  value={username}
                   required
+                  onChange={(e) => setUsername(e.target.value)}
                 />
               </div>
               <div className="grid gap-2">
@@ -41,15 +62,24 @@ export function RegisterForm(
                   id="email"
                   type="email"
                   placeholder="m@example.com"
+                  value={email}
                   required
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="grid gap-2">
                 <div className="flex items-center">
                   <Label htmlFor="password">Password</Label>
                 </div>
-                <Input id="password" type="password" required />
+                <Input 
+                  id="password" 
+                  type="password"
+                  value={password}
+                  required
+                  onChange={(e) => setPassword(e.target.value)}
+                />
               </div>
+              {error && <p className="text-destructive">{error}</p>}
               <Button type="button" onClick={handleSubmit} className="w-full">
                 Register
               </Button>

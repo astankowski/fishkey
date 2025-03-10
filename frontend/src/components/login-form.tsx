@@ -5,17 +5,34 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useNavigate } from "react-router-dom"
 import { toast, Toaster } from "sonner"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import background_image from "@/assets/background-image.webp"
+import axios from "axios"
+import { login } from "@/lib/services"
 
 export function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
+  const [error, setError] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState('');
+
   const navigate = useNavigate();
-  const handleSubmit = () => {
-    navigate("/");
-  };
+
+  const handleSubmit = async () => {
+      try {
+        const response = await login({ email, password })
+  
+        const accessToken = response.data.jwt;
+        // localStorage is unsafe, will change to cookies
+        localStorage.setItem("accessToken", accessToken);
+        navigate("/");
+      } catch (error:any) {
+        setError(error.response ? error.response.data : error.message);
+      }
+    };
+
   useEffect(() => {
     toast("Account created succesfully!");
   }, []);
@@ -39,7 +56,9 @@ export function LoginForm({
                     id="email"
                     type="email"
                     placeholder="m@example.com"
-                    required />
+                    required 
+                    onChange={(e) => setEmail(e.target.value)}
+                    />
                 </div>
                 <div className="grid gap-2">
                   <div className="flex items-center">
@@ -51,8 +70,14 @@ export function LoginForm({
                       Forgot your password?
                     </a>
                   </div>
-                  <Input id="password" type="password" required />
+                  <Input
+                    id="password"
+                    type="password"
+                    required
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
                 </div>
+                {error && <p className="text-destructive">{error}</p>}
                 <Button type="button" onClick={handleSubmit} className="w-full">
                   Login
                 </Button>
