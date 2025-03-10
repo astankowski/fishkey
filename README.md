@@ -9,6 +9,25 @@ https://github.com/user-attachments/assets/e152a340-4f60-4122-89a0-c4b7a58c6220
 
 https://github.com/user-attachments/assets/807f085e-be56-4d90-8805-21e7a92bc772
 
+## Todo
+
+- [ ] Better error handling
+- [ ] Implement pagination for the leaderboard, trophies and public sets
+- [ ] Rewrite AI chatbot from python to spring-ai-ollama-spring-boot-starter
+- [ ] Allow users to generate definitions using AI
+- [ ] Generate trophies with AI instead of using emojis
+- [ ] Create a landing page
+- [ ] Write better api documentation
+- [ ] Use Certbot for https
+
+### In Progress
+
+- [ ] Implement user auth with JWT
+- [ ] Integration tests 
+- [ ] Migrate to Tailwind v4
+- [ ] Create axios client to handle all frontend requests
+- [ ] Axios interceptor
+
 ## Tech Stack
 ### Backend
 - **Java**
